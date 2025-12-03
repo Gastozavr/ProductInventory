@@ -1,0 +1,144 @@
+package ru.productinventory.repository;
+
+import lombok.RequiredArgsConstructor;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
+import ru.productinventory.model.Color;
+import ru.productinventory.model.Country;
+import ru.productinventory.model.Person;
+import ru.productinventory.repository.util.SortSupport;
+
+import java.util.*;
+
+@Repository
+@RequiredArgsConstructor
+public class PersonRepository {
+    private final SessionFactory sf;
+    private Session s() { return sf.getCurrentSession(); }
+
+    public Optional<Person> findById(Long id) { return Optional.ofNullable(s().get(Person.class, id)); }
+    public Long save(Person e) { s().persist(e); return e.getId(); }
+    public Long merge(Person e) { return (s().merge(e)).getId(); }
+    public void delete(Person e) { s().remove(e); }
+
+    public Person findByBusinessKey(String nameLowerNorm) {
+        if (nameLowerNorm == null) return null;
+
+        return s().createQuery("""
+            select p from Person p
+            where lower(p.name) = :nm
+            """, Person.class)
+                .setParameter("nm", nameLowerNorm)
+                .setMaxResults(1)
+                .uniqueResult();
+    }
+
+
+    private static final Map<String, SortSupport.Rule> SORT = new LinkedHashMap<>();
+    static {
+        SORT.put("id",          SortSupport.Rule.column("p.id"));
+        SORT.put("name",        SortSupport.Rule.column("p.name"));
+        SORT.put("height",      SortSupport.Rule.column("p.height"));
+        SORT.put("nationality", SortSupport.Rule.column("p.nationality"));
+        SORT.put("eyeColor",    SortSupport.Rule.column("p.eyeColor"));
+        SORT.put("hairColor",   SortSupport.Rule.column("p.hairColor"));
+        SORT.put("locationName", SortSupport.Rule.column("p.location.name"));
+        SORT.put("locationX",    SortSupport.Rule.column("p.location.x"));
+        SORT.put("locationY",    SortSupport.Rule.column("p.location.y"));
+    }
+
+    public List<Person> findFiltered(
+            String name, String eyeColorLike, String hairColorLike, String nationalityLike, String locationName,
+            int offset, int limit, String sort, String dir
+    ) {
+        List<Color> eyes = null;
+        List<Color> hairs = null;
+        List<Country> nats = null;
+
+        if (eyeColorLike != null && !eyeColorLike.isBlank()) {
+            String n = eyeColorLike.trim().toLowerCase();
+            eyes = Arrays.stream(Color.values()).filter(c -> c.name().toLowerCase().contains(n)).toList();
+            if (eyes.isEmpty()) return List.of();
+        }
+        if (hairColorLike != null && !hairColorLike.isBlank()) {
+            String n = hairColorLike.trim().toLowerCase();
+            hairs = Arrays.stream(Color.values()).filter(c -> c.name().toLowerCase().contains(n)).toList();
+            if (hairs.isEmpty()) return List.of();
+        }
+        if (nationalityLike != null && !nationalityLike.isBlank()) {
+            String n = nationalityLike.trim().toLowerCase();
+            nats = Arrays.stream(Country.values()).filter(c -> c.name().toLowerCase().contains(n)).toList();
+            if (nats.isEmpty()) return List.of();
+        }
+
+        StringBuilder hql = new StringBuilder("""
+            select p from Person p where 1=1
+        """);
+        if (name != null && !name.isBlank()) hql.append(" and lower(p.name) like lower(:name) ");
+        if (eyes != null)                    hql.append(" and p.eyeColor in (:eyes) ");
+        if (hairs != null)                   hql.append(" and p.hairColor in (:hairs) ");
+        if (nats != null)                    hql.append(" and p.nationality in (:nats) ");
+        if (locationName != null && !locationName.isBlank())
+            hql.append(" and lower(p.location.name) like lower(:locName) ");
+
+        var built = SortSupport.build(SORT, sort, dir, "id");
+        hql.append(" order by ").append(built.orderBy());
+
+        var q = s().createQuery(hql.toString(), Person.class);
+        if (name != null && !name.isBlank()) q.setParameter("name", "%" + name.trim() + "%");
+        if (eyes != null) q.setParameterList("eyes", eyes);
+        if (hairs != null) q.setParameterList("hairs", hairs);
+        if (nats != null) q.setParameterList("nats", nats);
+        if (locationName != null && !locationName.isBlank())
+            q.setParameter("locName", "%" + locationName.trim() + "%");
+
+        q.setFirstResult(Math.max(offset,0));
+        q.setMaxResults(Math.max(limit,1));
+        return q.list();
+    }
+
+    public long countFiltered(
+            String name, String eyeColorLike, String hairColorLike, String nationalityLike, String locationName
+    ) {
+        List<Color> eyes = null;
+        List<Color> hairs = null;
+        List<Country> nats = null;
+
+        if (eyeColorLike != null && !eyeColorLike.isBlank()) {
+            String n = eyeColorLike.trim().toLowerCase();
+            eyes = Arrays.stream(Color.values()).filter(c -> c.name().toLowerCase().contains(n)).toList();
+            if (eyes.isEmpty()) return 0L;
+        }
+        if (hairColorLike != null && !hairColorLike.isBlank()) {
+            String n = hairColorLike.trim().toLowerCase();
+            hairs = Arrays.stream(Color.values()).filter(c -> c.name().toLowerCase().contains(n)).toList();
+            if (hairs.isEmpty()) return 0L;
+        }
+        if (nationalityLike != null && !nationalityLike.isBlank()) {
+            String n = nationalityLike.trim().toLowerCase();
+            nats = Arrays.stream(Country.values()).filter(c -> c.name().toLowerCase().contains(n)).toList();
+            if (nats.isEmpty()) return 0L;
+        }
+
+        StringBuilder hql = new StringBuilder("""
+            select count(p.id) from Person p where 1=1
+        """);
+        if (name != null && !name.isBlank()) hql.append(" and lower(p.name) like lower(:name) ");
+        if (eyes != null)                    hql.append(" and p.eyeColor in (:eyes) ");
+        if (hairs != null)                   hql.append(" and p.hairColor in (:hairs) ");
+        if (nats != null)                    hql.append(" and p.nationality in (:nats) ");
+        if (locationName != null && !locationName.isBlank())
+            hql.append(" and lower(p.location.name) like lower(:locName) ");
+
+        var q = s().createQuery(hql.toString(), Long.class);
+        if (name != null && !name.isBlank()) q.setParameter("name", "%" + name.trim() + "%");
+        if (eyes != null) q.setParameterList("eyes", eyes);
+        if (hairs != null) q.setParameterList("hairs", hairs);
+        if (nats != null) q.setParameterList("nats", nats);
+        if (locationName != null && !locationName.isBlank())
+            q.setParameter("locName", "%" + locationName.trim() + "%");
+
+        return q.getSingleResult();
+    }
+}
