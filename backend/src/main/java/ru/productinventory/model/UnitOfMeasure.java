@@ -1,7 +1,11 @@
 package ru.productinventory.model;
 
 public enum UnitOfMeasure {
-    CENTIMETERS,
-    MILLILITERS,
-    MILLIGRAMS;
+    PIECES,
+    KILOGRAMS,
+    LITERS,
+    METERS,
+    BOXES,
+    SETS,
+    PACKAGES;
 }

@@ -283,7 +283,6 @@ export default function ProductsPage() {
           <span className="spacer" />
           <button className="btn" onClick={resetAll}>Сбросить</button>
 
-          {/* Кнопка импорта — между "Сбросить" и селектом */}
           <button className="btn" onClick={onClickImport} disabled={uploading}>
             {uploading ? 'Импорт…' : 'Импорт'}
           </button>

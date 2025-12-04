@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { listOrgs } from '../api/orgs'
 import { listPersons } from '../api/persons'
 
-const UNITS = ['CENTIMETERS','MILLILITERS','MILLIGRAMS']
+const UNITS = ['PIECES','KILOGRAMS','LITERS','METERS','BOXES','SETS','PACKAGES']
 
 export default function ProductForm({ value, onChange, submitTried=false, errors={} }) {
     const [orgs, setOrgs] = useState([])

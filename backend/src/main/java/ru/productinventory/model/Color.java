@@ -1,9 +1,9 @@
 package ru.productinventory.model;
 
 public enum Color {
-    RED,
-    BLACK,
-    ORANGE,
-    WHITE,
-    BROWN;
+    SALES,
+    LOGISTICS,
+    FINANCE,
+    IT,
+    HR;
 }

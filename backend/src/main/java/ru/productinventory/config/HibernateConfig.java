@@ -20,9 +20,9 @@ public class HibernateConfig {
     @Bean
     public DataSource dataSource() {
         try {
-            return (DataSource) new InitialContext().lookup("java:/Helios");
+            return (DataSource) new InitialContext().lookup("java:/ProductInventoryDS");
         } catch (NamingException e) {
-            throw new IllegalStateException("JNDI DataSource java:/jdbc/studs not found in WildFly", e);
+            throw new IllegalStateException("JNDI DataSource java:/ProductInventoryDS not found", e);
         }
     }
 

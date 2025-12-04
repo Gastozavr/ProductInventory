@@ -68,12 +68,12 @@ export default function PersonsPage(){
 
     const columns = useMemo(()=>[
         { key:'id', title:'ID' },
-        { key:'name', title:'Имя' },
-        { key:'nationality', title:'Гражданство' },
-        { key:'height', title:'Рост' },
-        { key:'eyeColor', title:'Глаза' },
-        { key:'hairColor', title:'Волосы' },
-        { key:'locationName', title:'Локация', render:(v,row)=> v ?? `(${row.locationX ?? '–'}, ${row.locationY ?? '–'})` },
+        { key:'name', title:'ФИО' },
+        { key:'nationality', title:'Страна' },
+        { key:'height', title:'Стаж' },
+        { key:'eyeColor', title:'Отдел' },
+        { key:'hairColor', title:'Должность' },
+        { key:'locationName', title:'Офис', render:(v,row)=> v ?? `(${row.locationX ?? '–'}, ${row.locationY ?? '–'})` },
     ],[])
 
     function load(){
@@ -178,15 +178,15 @@ export default function PersonsPage(){
                     const selectStyle = { width: 90, padding: '6px 8px' }
                     return (
                         <>
-                            <input style={inputStyle} placeholder="Имя" value={filters.name}
+                            <input style={inputStyle} placeholder="ФИО" value={filters.name}
                                    onChange={e=>{ setFilters({...filters, name: e.target.value}); setPage(0) }}/>
-                            <input style={inputStyle} placeholder="Гражд." value={filters.nationality}
+                            <input style={inputStyle} placeholder="Страна" value={filters.nationality}
                                    onChange={e=>{ setFilters({...filters, nationality: e.target.value}); setPage(0) }}/>
-                            <input style={inputStyle} placeholder="Глаза" value={filters.eyeColor}
+                            <input style={inputStyle} placeholder="Отдел" value={filters.eyeColor}
                                    onChange={e=>{ setFilters({...filters, eyeColor: e.target.value}); setPage(0) }}/>
-                            <input style={inputStyle} placeholder="Волосы" value={filters.hairColor}
+                            <input style={inputStyle} placeholder="Должность" value={filters.hairColor}
                                    onChange={e=>{ setFilters({...filters, hairColor: e.target.value}); setPage(0) }}/>
-                            <input style={inputStyle} placeholder="Локация" value={filters.locationName}
+                            <input style={inputStyle} placeholder="Офис" value={filters.locationName}
                                    onChange={e=>{ setFilters({...filters, locationName: e.target.value}); setPage(0) }}/>
                             <button className="btn" style={{ padding:'6px 10px' }}
                                     onClick={()=>{ setFilters({ name:'', nationality:'', eyeColor:'', hairColor:'', locationName:'' }); setPage(0) }}>
@@ -272,14 +272,14 @@ function PersonDetails({ id }){
     return (
         <div className="card">
             <div style={{display:'grid',gridTemplateColumns:'1fr 1fr', gap:12}}>
-                <Field label="Имя" value={data.name}/>
-                <Field label="Глаза" value={data.eyeColor}/>
-                <Field label="Волосы" value={data.hairColor}/>
-                <Field label="Рост" value={data.height}/>
-                <Field label="Гражданство" value={data.nationality}/>
-                <Field label="Локация" value={data.locationName}/>
-                <Field label="Локация X" value={data.locationX}/>
-                <Field label="Локация Y" value={data.locationY}/>
+                <Field label="ФИО" value={data.name}/>
+                <Field label="Страна" value={data.nationality}/>
+                <Field label="Отдел" value={data.eyeColor}/>
+                <Field label="Должность" value={data.hairColor}/>
+                <Field label="Стаж (лет)" value={data.height}/>
+                <Field label="Офис" value={data.locationName}/>
+                <Field label="Долгота" value={data.locationX}/>
+                <Field label="Широта" value={data.locationY}/>
             </div>
         </div>
     )

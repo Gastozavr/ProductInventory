@@ -2,7 +2,6 @@ package ru.productinventory.mapper;
 
 import org.springframework.stereotype.Component;
 
-// ==== Импортные/CRUD DTO ====
 import ru.productinventory.dto.imports.OrganizationImportDTO;
 import ru.productinventory.dto.imports.PersonImportDTO;
 import ru.productinventory.dto.imports.ProductImportDTO;

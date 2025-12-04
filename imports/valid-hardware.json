@@ -1,0 +1,75 @@
+[
+  {
+    "name": "Припой ПОС-61 1кг",
+    "coordinates": {"x": 100, "y": 50},
+    "unitOfMeasure": "KILOGRAMS",
+    "price": 2800,
+    "manufactureCost": 1500,
+    "rating": 95,
+    "partNumber": "SOLDER-POS61-1KG",
+    "manufacturer": {
+      "name": "ЭлектроМастер",
+      "fullName": "ООО ЭлектроМастер Компоненты",
+      "annualTurnover": 80000000,
+      "employeesCount": 45,
+      "officialAddress": {
+        "zipCode": "190000",
+        "town": {
+          "x": 30,
+          "y": 59,
+          "z": 10,
+          "name": "Санкт-Петербург"
+        }
+      }
+    },
+    "owner": {
+      "name": "Игорь Техников",
+      "coordinates": {"x": 30, "y": 59},
+      "height": 12,
+      "eyeColor": "IT",
+      "hairColor": "IT",
+      "nationality": "RUSSIA",
+      "location": {"x": 30, "y": 59, "name": "СПб"}
+    }
+  },
+  {
+    "name": "Кабель витая пара Cat6 305м",
+    "coordinates": {"x": 101, "y": 51},
+    "unitOfMeasure": "METERS",
+    "price": 8500,
+    "manufactureCost": 4000,
+    "rating": 88,
+    "partNumber": "CABLE-CAT6-305M",
+    "manufacturer": {
+      "name": "ЭлектроМастер",
+      "fullName": "ООО ЭлектроМастер Компоненты"
+    }
+  },
+  {
+    "name": "Изолента ПВХ 19мм 20м",
+    "coordinates": {"x": 102, "y": 52},
+    "unitOfMeasure": "PIECES",
+    "price": 95,
+    "manufactureCost": 40,
+    "rating": 80,
+    "partNumber": "TAPE-PVC-19-20",
+    "manufacturer": {
+      "name": "ЭлектроМастер",
+      "fullName": "ООО ЭлектроМастер Компоненты"
+    }
+  },
+  {
+    "name": "Термопаста Arctic MX-4 4г",
+    "coordinates": {"x": 103, "y": 53},
+    "unitOfMeasure": "PIECES",
+    "price": 890,
+    "manufactureCost": 450,
+    "rating": 97,
+    "partNumber": "THERMAL-MX4-4G",
+    "manufacturer": {
+      "name": "ЭлектроМастер",
+      "fullName": "ООО ЭлектроМастер Компоненты"
+    }
+  }
+]
+

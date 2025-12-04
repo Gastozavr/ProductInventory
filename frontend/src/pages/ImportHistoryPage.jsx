@@ -83,7 +83,6 @@ export default function ImportHistoryPage(){
                 <h1>История импорта</h1>
             </div>
 
-            {/* верхняя «полоса» с таким же селектом, как на других страницах */}
             <div className="toolbar" style={toolbarStyle}>
                 <span style={{ flex:1 }} />
                 <select

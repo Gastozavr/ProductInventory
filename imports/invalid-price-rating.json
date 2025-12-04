@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Товар с отрицательной ценой",
+    "coordinates": {"x": 50, "y": 50},
+    "unitOfMeasure": "PIECES",
+    "price": -500,
+    "manufactureCost": 100,
+    "rating": 50,
+    "partNumber": "INVALID-PRICE-001",
+    "manufacturer": {
+      "name": "Тестовая компания",
+      "fullName": "ООО Тестовая компания"
+    }
+  },
+  {
+    "name": "Товар с нулевым рейтингом",
+    "coordinates": {"x": 51, "y": 51},
+    "unitOfMeasure": "PIECES",
+    "price": 1000,
+    "manufactureCost": 500,
+    "rating": 0,
+    "partNumber": "INVALID-RATING-001",
+    "manufacturer": {
+      "name": "Тестовая компания",
+      "fullName": "ООО Тестовая компания"
+    }
+  },
+  {
+    "name": "Товар с ценой = 0",
+    "coordinates": {"x": 52, "y": 52},
+    "unitOfMeasure": "PIECES",
+    "price": 0,
+    "manufactureCost": 0,
+    "rating": 80,
+    "partNumber": "INVALID-ZERO-PRICE",
+    "manufacturer": {
+      "name": "Тестовая компания",
+      "fullName": "ООО Тестовая компания"
+    }
+  }
+]
+
