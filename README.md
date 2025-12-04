@@ -2,66 +2,66 @@
 
 # 📦 Product Inventory
 
-**Система управления товарами, организациями и персоналом**
+**Product, Organization & Personnel Management System**
 
 [![Java](https://img.shields.io/badge/Java-17-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://openjdk.org/) [![Spring](https://img.shields.io/badge/Spring-6.1-6DB33F?style=for-the-badge&logo=spring&logoColor=white)](https://spring.io/) [![Hibernate](https://img.shields.io/badge/Hibernate-6.4-59666C?style=for-the-badge&logo=hibernate&logoColor=white)](https://hibernate.org/) [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://postgresql.org/) [![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 
 <br/>
 
-*Бизнес-ориентированная платформа для ведения каталога продукции,*  
-*хранения данных о поставщиках и массового импорта товаров*
+*Business-oriented platform for product catalog management,*  
+*supplier data storage, and bulk product import*
 
 <br/>
 
-[Возможности](#-возможности) •
-[Скриншоты](#-скриншоты) •
-[Запуск](#-быстрый-старт) •
+[Features](#-features) •
+[Screenshots](#-screenshots) •
+[Getting Started](#-getting-started) •
 [API](#-api)
 
 </div>
 
 ---
 
-## 🌟 Возможности
+## 🌟 Features
 
 <table>
 <tr>
 <td width="50%">
 
-### 📦 Управление продуктами
-- Полный CRUD с валидацией
-- Связи: Продукт → Производитель → Владелец  
-- Уникальность по артикулу + производителю
-- Нормализация данных при сохранении
+### 📦 Product Management
+- Full CRUD with validation
+- Relations: Product → Manufacturer → Owner  
+- Unique constraint by part number + manufacturer
+- Data normalization on save
 
 </td>
 <td width="50%">
 
-### 📥 Массовый импорт
-- Загрузка из JSON файлов
-- Атомарные транзакции (всё или ничего)
-- Автосоздание связанных сущностей
-- История операций с статусами
+### 📥 Bulk Import
+- Upload from JSON files
+- Atomic transactions (all or nothing)
+- Auto-creation of related entities
+- Operation history with statuses
 
 </td>
 </tr>
 <tr>
 <td width="50%">
 
-### 🔍 Фильтрация и сортировка
-- Поиск по любому полю
-- Сортировка кликом по заголовку
-- Гибкая пагинация
-- Сохранение настроек
+### 🔍 Filtering & Sorting
+- Search by any field
+- Sort by clicking column header
+- Flexible pagination
+- Settings persistence
 
 </td>
 <td width="50%">
 
-### 🔔 Real-time обновления
-- WebSocket уведомления
-- Автообновление при изменениях
-- Синхронизация между вкладками
-- Мгновенная обратная связь
+### 🔔 Real-time Updates
+- WebSocket notifications
+- Auto-refresh on changes
+- Cross-tab synchronization
+- Instant feedback
 
 </td>
 </tr>
@@ -69,38 +69,38 @@
 
 ---
 
-## 📸 Скриншоты
+## 📸 Screenshots
 
 <div align="center">
 
-### Каталог продуктов
+### Product Catalog
 
-![Каталог продуктов](screenshots/productPage.png)
-
-<br/>
-
-### Создание продукта
-
-![Создание продукта](screenshots/product-create.png)
+![Product Catalog](screenshots/productPage.png)
 
 <br/>
 
-### Валидация данных
+### Create Product
+
+![Create Product](screenshots/product-create.png)
+
+<br/>
+
+### Data Validation
 
 <table>
 <tr>
 <td width="50%" align="center">
 
-![Валидация формы](screenshots/validation-form.png)
+![Form Validation](screenshots/validation-form.png)
 
-**Валидация на клиенте**
+**Client-side Validation**
 
 </td>
 <td width="50%" align="center">
 
-![Бизнес-валидация](screenshots/validation-business.png)
+![Business Validation](screenshots/validation-business.png)
 
-**Бизнес-правила сервера**
+**Server Business Rules**
 
 </td>
 </tr>
@@ -108,22 +108,22 @@
 
 <br/>
 
-### Организации и персонал
+### Organizations & Personnel
 
 <table>
 <tr>
 <td width="50%" align="center">
 
-![Организации](screenshots/organizationPage.png)
+![Organizations](screenshots/organizationPage.png)
 
-**Управление организациями**
+**Organization Management**
 
 </td>
 <td width="50%" align="center">
 
-![Персонал](screenshots/personPage.png)
+![Personnel](screenshots/personPage.png)
 
-**Управление персоналом**
+**Personnel Management**
 
 </td>
 </tr>
@@ -131,22 +131,22 @@
 
 <br/>
 
-### Импорт данных
+### Data Import
 
 <table>
 <tr>
 <td width="50%" align="center">
 
-![Импорт](screenshots/importProducts.png)
+![Import](screenshots/importProducts.png)
 
-**Результат импорта**
+**Import Result**
 
 </td>
 <td width="50%" align="center">
 
-![История](screenshots/importProductsHistory.png)
+![History](screenshots/importProductsHistory.png)
 
-**История операций**
+**Operation History**
 
 </td>
 </tr>
@@ -154,22 +154,22 @@
 
 <br/>
 
-### Фильтрация и сортировка
+### Filtering & Sorting
 
 <table>
 <tr>
 <td width="50%" align="center">
 
-![Фильтрация](screenshots/filters.png)
+![Filtering](screenshots/filters.png)
 
-**Фильтрация по полям**
+**Field Filtering**
 
 </td>
 <td width="50%" align="center">
 
-![Сортировка](screenshots/filters-sorted.png)
+![Sorting](screenshots/filters-sorted.png)
 
-**Сортировка по артикулу**
+**Sort by Part Number**
 
 </td>
 </tr>
@@ -179,9 +179,9 @@
 
 ---
 
-## 🚀 Быстрый старт
+## 🚀 Getting Started
 
-### Требования
+### Requirements
 
 ![Java](https://img.shields.io/badge/Java-17+-ED8B00?style=flat-square&logo=openjdk&logoColor=white) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-14+-4169E1?style=flat-square&logo=postgresql&logoColor=white) ![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=flat-square&logo=nodedotjs&logoColor=white)
 
@@ -192,7 +192,7 @@ cd backend
 mvn clean package
 ```
 
-> ⚙️ Настройте JNDI DataSource `java:/ProductInventoryDS` в сервере приложений
+> ⚙️ Configure JNDI DataSource `java:/ProductInventoryDS` in your application server
 
 ### Frontend
 
@@ -200,7 +200,7 @@ mvn clean package
 cd frontend
 npm install
 npm run dev       # → http://localhost:5173
-npm run build     # Production сборка
+npm run build     # Production build
 ```
 
 ---
@@ -208,67 +208,67 @@ npm run build     # Production сборка
 ## 📡 API
 
 <details>
-<summary><b>Products</b> — управление товарами</summary>
+<summary><b>Products</b> — product management</summary>
 
-| Метод | Endpoint | Описание |
-|:-----:|----------|----------|
-| `GET` | `/product` | Список с фильтрацией |
-| `GET` | `/product/{id}` | Получить по ID |
-| `POST` | `/product` | Создать |
-| `PUT` | `/product/{id}` | Обновить |
-| `DELETE` | `/product/{id}` | Удалить |
-
-</details>
-
-<details>
-<summary><b>Organizations</b> — управление организациями</summary>
-
-| Метод | Endpoint | Описание |
-|:-----:|----------|----------|
-| `GET` | `/organization` | Список |
-| `GET` | `/organization/{id}` | Получить по ID |
-| `POST` | `/organization` | Создать |
-| `PUT` | `/organization/{id}` | Обновить |
-| `DELETE` | `/organization/{id}` | Удалить |
+| Method | Endpoint | Description |
+|:------:|----------|-------------|
+| `GET` | `/product` | List with filtering |
+| `GET` | `/product/{id}` | Get by ID |
+| `POST` | `/product` | Create |
+| `PUT` | `/product/{id}` | Update |
+| `DELETE` | `/product/{id}` | Delete |
 
 </details>
 
 <details>
-<summary><b>Persons</b> — управление персоналом</summary>
+<summary><b>Organizations</b> — organization management</summary>
 
-| Метод | Endpoint | Описание |
-|:-----:|----------|----------|
-| `GET` | `/person` | Список |
-| `GET` | `/person/{id}` | Получить по ID |
-| `POST` | `/person` | Создать |
-| `PUT` | `/person/{id}` | Обновить |
-| `DELETE` | `/person/{id}` | Удалить |
-
-</details>
-
-<details>
-<summary><b>Import</b> — массовый импорт</summary>
-
-| Метод | Endpoint | Описание |
-|:-----:|----------|----------|
-| `POST` | `/import/products` | Загрузить файл |
-| `GET` | `/import-history` | История операций |
+| Method | Endpoint | Description |
+|:------:|----------|-------------|
+| `GET` | `/organization` | List |
+| `GET` | `/organization/{id}` | Get by ID |
+| `POST` | `/organization` | Create |
+| `PUT` | `/organization/{id}` | Update |
+| `DELETE` | `/organization/{id}` | Delete |
 
 </details>
 
 <details>
-<summary><b>WebSocket</b> — real-time уведомления</summary>
+<summary><b>Persons</b> — personnel management</summary>
 
-| Endpoint | Описание |
-|----------|----------|
+| Method | Endpoint | Description |
+|:------:|----------|-------------|
+| `GET` | `/person` | List |
+| `GET` | `/person/{id}` | Get by ID |
+| `POST` | `/person` | Create |
+| `PUT` | `/person/{id}` | Update |
+| `DELETE` | `/person/{id}` | Delete |
+
+</details>
+
+<details>
+<summary><b>Import</b> — bulk import</summary>
+
+| Method | Endpoint | Description |
+|:------:|----------|-------------|
+| `POST` | `/import/products` | Upload file |
+| `GET` | `/import-history` | Operation history |
+
+</details>
+
+<details>
+<summary><b>WebSocket</b> — real-time notifications</summary>
+
+| Endpoint | Description |
+|----------|-------------|
 | `/ws` | STOMP WebSocket |
-| `/topic/changes` | Подписка на изменения |
+| `/topic/changes` | Subscribe to changes |
 
 </details>
 
 ---
 
-## 📂 Структура проекта
+## 📂 Project Structure
 
 ```
 ProductInventory/
@@ -278,9 +278,9 @@ ProductInventory/
 │   └── src/main/java/ru/productinventory/
 │       ├── config/        # Spring, Hibernate, WebSocket
 │       ├── controller/    # REST API
-│       ├── service/       # Бизнес-логика
-│       ├── repository/    # Доступ к данным
-│       ├── model/         # Сущности
+│       ├── service/       # Business logic
+│       ├── repository/    # Data access
+│       ├── model/         # Entities
 │       ├── dto/           # Transfer Objects
 │       ├── mapper/        # DTO ↔ Entity
 │       └── ws/            # WebSocket
@@ -288,8 +288,7 @@ ProductInventory/
 └── 📁 frontend/
     ├── package.json
     └── src/
-        ├── api/           # HTTP/WS клиенты
-        ├── components/    # UI-компоненты
-        └── pages/         # Страницы
+        ├── api/           # HTTP/WS clients
+        ├── components/    # UI components
+        └── pages/         # Pages
 ```
-
